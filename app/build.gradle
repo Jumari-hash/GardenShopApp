@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python' version '12.0.1'
+}
+
+android {
+    namespace "com.example.gardenshop"
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.example.gardenshop"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        python {
+            buildPython "/usr/local/bin/python3.8"
+        }
+
+        // ✅ Required by Chaquopy
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+
+    buildFeatures {
+        aidl false
+        renderScript false
+        shaders false
+        prefab false
+    }
+}
+
+dependencies {
+    // Add libraries here if needed
+}
